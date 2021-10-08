@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>1008.html</title>
+</head>
+<style>
+</style>
+<script src="http://code.Jquery.com/Jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#test1').keyup(function(key){
+            if(key.keyCode==13) //키가 13이면 실행 (엔터는13)
+                $('#test2').focus();
+        });
+        $('#test2').keyup(function (key){
+            if(key.keyCode==13)
+                $('#test3').focus();
+        });     
+        $('#test3').keyup(function (key){
+            if(key.keyCode==13)
+                 $('#test4').focus();
+        });
+        var hap=0;                 
+        $('#test4').keyup(function (key){
+            if(key.keyCode==13){
+                $('input').each(function (index,html){
+                    if(index != 0)
+                         hap = hap + Number($(html).val());
+                });                                        
+                    document.body.innerHTML += '총점:'+ hap +'점<br>';
+                }                    
+            });
+        });
+</script>
+
+    <script>
+    //------------건색창?
+    $(document).ready(function(){
+    $("input[name=searchBook]").keydown(function (key) {
+        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+            searchBook();
+        }
+    });
+        //검색 찾는 로직 구현
+    searchBook = function (){
+        alert($("input[name=searchBook]").val());
+        };
+    });
+    </script>
+
+<body>
+    <!-- 검색창 -->
+    검색창:<input type="search" name="searchBook"> <br><br>
+
+    이름 : <input type='text' id='test1'/><br>
+    국어 : <input type='text' id='test2'/><br>
+    영어 : <input type='text' id='test3'/><br>
+    수학 : <input type='text' id='test4'/><br>
+
+    <input type="submit" value="제출">
+    
+</body>
+</html>

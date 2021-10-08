@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SWING(시계 추)</title>
+<style></style>
+<script src ="http://code.JQuery.com/JQuery-3.6.0.js"></script>
+
+<script>
+    var typeHandle;
+    var list='';
+    var list2='';
+    var strTyping = 'Hello World~~ Congratulations...              ';
+    var strTyping2 = 'I Love You....';
+    var idx=0;
+    var idx2=0;
+
+    function infiniteStart(){ typeHandle = setInterval(start,7500);
+        while(1){return start();}
+    }
+
+    function start(){ typeHandle = setInterval(typing,150);
+    }
+    function stop(){
+        clearInterval(typeHandle);
+    }
+    function typing(){
+
+        if(idx<strTyping.length){
+            list = list + strTyping[idx];
+            idx++;
+            document.body.innerHTML = list;
+        if(idx>33){
+            return typing2();
+            }
+        }
+            else{
+            idx =0;
+            list ='';
+            }
+    }
+
+    function typing2(){
+        if(idx2<strTyping2.length){
+            list2 = list2 + strTyping2[idx2];
+            idx2++;
+            document.body.innerHTML = list2;
+        if(idx2==13){
+            return stop();
+            }
+        }
+            else{
+            idx2 =0;
+            list2 ='';
+            }
+    }
+
+</script>
+</head>
+<body>
+    <input type="button" value="타이핑 하기" onclick="infiniteStart();"><br><br>
+    <input type="button" value="타이핑 정지" onclick="stop();">
+</body>
+</html>

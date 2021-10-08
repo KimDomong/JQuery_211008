@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>음악캠프</title>
+<style>
+    #div{
+         font-size: 40pt;   
+         font-family: Verdana;
+        }
+</style>
+<script src="http://code.JQuery.com/JQuery-3.6.0.js"></script>
+<script>
+    var lyrics;
+    $(document).ready(function(){
+        $('#play').click(function(){
+            var audio = new Audio('./sound/신호등.mp3');
+            audio.play();
+
+            lyrics = [  [' ',500],
+                        ['- 간주중 -<br>',20500],
+                        ['이제야 목적지를 정했지만<br>',5000],
+                        ['가려한 날 막아서네<br>',4000],
+                        ['난 갈 길이 먼데<br>',2500]
+                        ];
+              var list = '';
+            $.each(lyrics,function(index,html){
+                list = list + '<span id="ly' + index +'" style="color:gray">';
+                list = list + html[0] + '</span>';
+            });
+            $('#lyrics').html(list);
+                changeblack()
+            
+        });
+        var num = 0;
+        function changeblack(){
+            $('#ly'+num).css('color','black');
+            num++
+            if(num>lyrics.length-1) return;
+            setTimeout(changeblack,lyrics[num-1][1]);
+        }
+    });
+</script>
+    
+</head>
+<body align="center">
+    <div id='play'><h1>start</h1></div>
+    <div>========노래가사========</div>
+    <div id='lyrics'></div>
+</body>
+</html>

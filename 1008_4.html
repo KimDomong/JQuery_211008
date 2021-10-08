@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SWING(시계 추)</title>     
+    <style> 
+    </style>
+    <script src="http://code.JQuery.com/JQuery-3.6.0.js"></script>
+    <script>
+        var typeHandle;
+        var idx=0;
+        var strTyping = '당신의 입사를 축하합니다!!';
+        var list='';
+        var id;
+        function start(){
+            typeHandle = setInterval(typing,100);
+            id = document.getElementById('test');
+        }
+        function stop(){
+            clearInterval(typeHandle);
+        }
+        function space(num){
+            var s = '';
+            for(var i=1;i<=num;i++)
+                s = s + '&nbsp;';
+            return s;
+        }
+        function typing(){
+            idx++;
+            var str = space(idx) + strTyping;            
+            id.innerHTML = str;            
+        }
+    </script>
+</head>
+<body> 
+    <input type="button" value="타이핑 시작" onclick="start();" />
+    <input type="button" value="타이핑 정지" onclick="stop();" />
+    <h1 id='test'></h1>
+</body>
+</html>
